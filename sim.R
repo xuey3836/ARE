@@ -1,0 +1,15 @@
+rm(list = ls())
+setwd("C:/Users/o0/Desktop/ARE/")
+source("loglik.R")
+n = 10000
+# Y = rbinom(n,1,0.3)
+G = sample(c(0,1,2),size =n, prob = c(0.2,0.3,0.5),replace = T)
+ex = exp(-0.5+ G*0.5)
+p1 = ex/(1+ex)
+Y = sapply(1:n, function(i){rbinom(1,1,p1[i])})
+l =glm(Y~G,family = binomial(link = "logit"))
+
+library(maxLik)
+maxLik(logLik = clogLik,grad = cgradLik,hess = chessianLik, start = c(1,1,0.5),Y=Y,G=G)
+# maxLik(logLik = clogLik, start = c(1,1,0.3))
+optimise(f = function(eta){-clogLik(c(exp(0.5254),exp(2*0.5254),eta),Y,G)},interval = c(-5,5))

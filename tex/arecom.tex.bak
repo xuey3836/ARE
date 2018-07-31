@@ -1,0 +1,158 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Lachaise Assignment
+% LaTeX Template
+% Version 1.0 (26/6/2018)
+%
+% This template originates from:
+% http://www.LaTeXTemplates.com
+%
+% Authors:
+% Marion Lachaise & François Févotte
+% Vel (vel@LaTeXTemplates.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass{article}
+
+\input{structure.tex} % Include the file specifying the document structure and custom commands
+
+%----------------------------------------------------------------------------------------
+%	ASSIGNMENT INFORMATION
+%----------------------------------------------------------------------------------------
+
+\title{The computation of four AREs} % Title of the assignment
+
+\author{Yuan Xue\\ \texttt{xueyuan115@mails.ucas.ac.cn}} % Author name and email address
+
+\date{University of Chinese Academy of Sciences--- \today} % University, school and/or department name(s) and a date
+
+%----------------------------------------------------------------------------------------
+\usepackage{booktabs}
+\begin{document}
+
+\maketitle % Print the title
+
+%----------------------------------------------------------------------------------------
+%	INTRODUCTION
+%----------------------------------------------------------------------------------------
+
+\section{Introduction} % Unnumbered section
+
+
+\subsection{Notation}
+likelihood function
+
+\begin{equation}
+ L_n(\lambda_1,\lambda_2,\eta) = \frac{\lambda_1^{r_1}\lambda_2^{r2}exp(r\eta)}{\{1+exp(\eta)\}^{n_0}\{1+\lambda_1exp(\eta)\}^{n_1}\{1+\lambda_2exp(\eta)\}^{n_2}}
+\end{equation}
+
+log-likelihood function $l_n(\lambda,\eta,\theta)$
+
+we work with $l_n(\lambda,1-\theta-+\theta\lambda,\eta)$, where $\theta$  is explicitly epressed.
+
+\begin{align*}
+x_1 = & \lambda\\
+x_2= & 1-\theta-\theta\lambda\\
+x_3 = & \eta
+\end{align*}
+
+Denote 
+
+\begin{align*}
+  l_{n,\mu} =& \partial l_n/\partial x_\mu \quad \text{for} \quad \mu= 1,2,3 \\
+  l_{n,\mu\nu}= & \partial^2 l_n/\partial x_\mu \partial x_\nu \quad \text{for} \quad \mu=1,2, \nu= 1,2,3\\
+  l_{n,33}= & \partial^2 l_n/\partial x_3 \partial x_3\\
+  l_{n,\mu\nu} = & l_{n,\nu\mu} \quad \text{for} \quad \mu,\nu = 1,2\\
+  l_{n,\mu\nu} = & l^T_{n,\nu\mu} \quad \text{for} \quad \mu= 1,2, \nu=3\\
+  L_{\mu\nu}(\eta) =& E_{H_0}(l_{1,\mu\nu}(1,1,\eta))\quad \text{for} \quad \mu=1,2,3, \nu= 1,2,3\\
+\end{align*}
+$$s(\theta,\eta) = l_{1,1}(1,1,\eta)+\theta l_{1,2}(1,1,\eta)-(L_{13}^T(\eta)+\theta L_{23}^T(\eta))L_{33}^{-1}(\eta)l_{1,3}(1,1,\eta)$$\\
+\subsection{Algorithm}
+\begin{itemize}
+\item Input: $Y$, $G$, $\theta^{(0)}$, $\theta_i$, $\theta_j$
+\item Output: $e_P(Z_{MERT},Z_{\theta^{(0)}})$, $\tilde{e}_C(Z_{MERT},Z_{\theta^{(0)}})$, $e_{HL}(Z_{MERT},Z_{\theta^{(0)}})$, $e_{B}(Z_{MERT},Z_{\theta^{(0)}})$
+\end{itemize}
+
+\begin{enumerate}[step 1]
+\item Estimate $\hat{\eta}$. where $\hat{\eta}$ satisfy $\partial l_n/\partial \eta|_{H_0,\hat{\eta}_n}= l_{n,3}(1,1,\hat{\eta}_n)=0$.
+\item Compute $l_n(1,1,\hat{\eta})$; $l_{n,\mu}(1,1,\hat{\eta})$, for $\mu= 1,2,3$; $l_{n,\mu\nu}(1,1,\hat{\eta})$ for $\mu= 1,2,3$, $\nu=1,2,3$.
+\item Compute $L_{\mu\nu}(\hat{\eta}) = E_{H_0}(l_{1,{\mu\nu}}(1,1,\hat{\eta})) ={\color{red} \frac{1}{n}l_{n,\mu\nu}(1,1,\hat{\eta}) }$
+\item Compute $\sigma(\theta^{(0)})$, $\sigma(\theta_i)$, $\sigma(\theta_j), \sigma(\theta^{(0)},\theta_i), \sigma(\theta^{(0)},\theta_j), \sigma(\theta_i,\theta_j)$, where $$\sigma(\theta_i,\theta_j) =A_{\hat{\eta}}\theta_i\theta_j+B_{\hat{\eta}}(\theta_i+\theta_j)+C_{\hat{\eta}}$$
+\begin{align*}
+ A_\eta =& L_{23}(\eta)L_{33}^{-1}(\eta)L_{32}(\eta)-L_{22}(\eta)\\
+ B_\eta =& L_{13}(\eta)L_{33}^{-1}(\eta)L_{31}(\eta)-L_{12}(\eta)\\
+ C_\eta =& L_{13}(\eta)L_{33}^{-1}(\eta)L_{31}(\eta)-L_{11}(\eta)
+\end{align*}
+\item Compute $\mu(\lambda,\theta^{(0)}),\mu(\lambda,\theta_i),\mu(\lambda,\theta_j)$,
+$$\mu(\lambda,\theta)= E_{H_1,\eta_0}(s(\theta,\eta_{\theta}))= {\color{red} \frac{1}{n}(l_{n,11}(n,1,\hat{\eta})+\theta l_{n,21}(n,1,\hat{\eta})- (L_{13}^T(\hat{\eta})+\theta L_{23}^T(\hat{\eta}))L_{33}^{-1}(\hat{\eta})l_{n,31}(1,1,\hat{\eta}))}$$
+\item Compute $\mu^{(1)}(\lambda,\theta^{(0)}),\mu^{(1)}(\lambda,\theta_i),\mu^{(1)}(\lambda,\theta_j)$,
+
+\begin{align*}
+\mu^{(1)}(\lambda,\theta)=& {\color{red} \frac{1}{n}(l_{n,11}(n,1,\hat{\eta})+\theta l_{n,21}(n,1,\hat{\eta})- (L_{13}^T(\hat{\eta})+\theta L_{23}^T(\hat{\eta}))L_{33}^{-1}(\hat{\eta})l_{n,31}(1,1,\eta))}\\
+= &{\color{red} L_{11}(\hat{\eta})+\theta L_{21}(\hat{\eta})- (L_{13}^T(\hat{\eta})+\theta L_{23}^T(\hat{\eta}))L_{33}^{-1}(\hat{\eta})L_{31}(\hat{\eta}))}
+\end{align*}
+
+\item Compute $e_P(Z_{MERT},Z(\theta^{(0)}))$. $$e_P(Z_{MERT},Z(\theta^{(0)}))=\frac{(\rho_{\theta_i,\theta^{(0)}}+\rho_{\theta_j,\theta^{(0)}})^2}{2(1+\rho_{\theta_i,\theta_j})}$$
+
+$$\rho_{\theta_i,\theta_j}= \frac{\sigma(\hat{\eta},\theta_i,\theta_j)}{{\sigma(\hat{\eta},\theta_i,\theta_i)\sigma(\hat{\eta},\theta_i,\theta_j)}^{1/2}}$$
+
+\item Compute \begin{align*}
+\tilde{e}_C(Z_{MERT},Z_{\theta^{(0)}})= \frac{ \tilde{Q}_{Z_{MERT}}}{\tilde{Q}_{Z_{\theta^{(0)}}}}\\
+\tilde{Q}_{Z_{\theta^{(0)}}} =  2\left(1-\Phi\left(\frac{\mu^{(1)}(\lambda_0,\theta^{(0)})}{2\sigma(\theta^{(0)})}\right)\right)\\
+\tilde{Q}_{Z_{MERT}} =  2\left(1-\Phi\left(\left[\frac{\mu^{(1)}(\lambda_0,\theta_i)}{2\sigma(\theta_i)}+\frac{\mu^{(1)}(\lambda_0,\theta_j)}{2\sigma(\theta_j)}\right]/\sqrt{8(1+\rho_{\theta_i,\theta_j})}\right)\right)\\
+\color{red} \lambda_0 = 1
+\end{align*}
+
+\item Compute  \begin{align*}
+ e_{HL}(Z_{MERT},Z_{\theta}) =\frac{d_{Z_{MERT}}(\lambda)}{d_{Z_{\theta}(\lambda)}}\\
+ d_{Z_\theta}(\lambda) =  \frac{\mu^2(\lambda,\theta)}{\sigma^2(\theta)}\\
+ d_{Z_{MERT}}(\lambda) = \mu^2_{MERT}(\lambda)= [\mu(\lambda,\theta_i)/\sigma(\theta_i)+\mu(\lambda,\theta_j)/\sigma(\theta_j)]/\sqrt{2(1+\rho_{\theta_i,\theta_j})}
+\end{align*}
+
+\item Compute  \begin{align*}
+ e_{B}(Z_{MERT},Z_{\theta}) = e_{HL}(Z_{MERT},Z_{\theta})\\
+ \tilde{e}_{B}(Z_{MERT},Z_{\theta}) = \frac{\tilde{c}_{Z_{MERT}}}{\tilde{c}_{Z_{\theta}}}\\
+ \tilde{c}_{Z_{MERT}} = 1 - \Phi(\mu^{(1)}_{MERT}(1))\\
+ \tilde{c}_{Z_{\theta}} = 1 - \Phi(\mu^{-1}(1,\theta^{(0)})/\sigma(\theta^{(0)})) 
+\end{align*}
+\end{enumerate}
+
+\subsection{simulation}
+Let $p$ be the minor allele frequency (MAF) of the marker of interest in the population. we consider case-control data with $r=500$ cases and $s= 500$ controls. and $\lambda \in \{1.1, 1.2, 1.3\}$ and $p \in \{0.15,0.30, 0.45 \}$, and the true $\theta^{(0)} \in \{0,1/4,1/2,1\}$. . we generate $Nrep=1000$ datasets. and we compute the mean and variance of the four AREs to  $Z_{MERT}$  and $Z_{\theta^{(0)}}$
+
+
+% Please add the following required packages to your document preamble:
+
+\begin{table}[]
+\centering
+\caption{The Four AREs of $Z_{MERT}$ and $Z_{\theta^{(0)}}$}
+\begin{tabular}{@{}cccccccccccccccc@{}}
+\toprule
+     &                       & \multicolumn{4}{c}{$\lambda=1.1$} &  & \multicolumn{4}{c}{$\lambda=1.3$} &  &\multicolumn{4}{c}{$\lambda=1.5$}\\ \cmidrule(r){3-6} \cmidrule(r){8-11}\cmidrule(r){13-16}
+MAF  & $\theta^{(0)}$ &   $e_P$        &    $e_C$       &    $e_{HL}$       &     $e_B$     &            &            $e_P$        &    $e_C$       &    $e_{HL}$       &     $e_B$    &           &      $e_P$        &    $e_C$       &    $e_{HL}$       &     $e_B$   \\ \hline 
+0.15 & 0                     &           &           &           &          &  &           &           &           &          &  &           &           &           &          \\
+     & 1/4                   &           &           &           &          &  &           &           &           &          &  &           &           &           &          \\
+     & 1/2                   &           &           &           &          &  &           &           &           &          &  &           &           &           &          \\
+     & 1                     &           &           &           &          &  &           &           &           &          &  &           &           &           &          \\
+     &                       &           &           &           &          &  &           &           &           &          &  &           &           &           &          \\
+0.30 & 0                     &           &           &           &          &  &           &           &           &          &  &           &           &           &          \\
+     & 1/4                   &           &           &           &          &  &           &           &           &          &  &           &           &           &          \\
+     & 1/2                   &           &           &           &          &  &           &           &           &          &  &           &           &           &          \\
+     & 1                     &           &           &           &          &  &           &           &           &          &  &           &           &           &          \\
+     &                       &           &           &           &          &  &           &           &           &          &  &           &           &           &          \\
+0.45 & 0                     &           &           &           &          &  &           &           &           &          &  &           &           &           &          \\
+     & 1/4                   &           &           &           &          &  &           &           &           &          &  &           &           &           &          \\
+     & 1/2                   &           &           &           &          &  &           &           &           &          &  &           &           &           &          \\
+     & 1                     &           &           &           &          &  &           &           &           &          &  &           &           &           &          \\ \bottomrule
+\end{tabular}
+\end{table}
+
+
+\end{document}
