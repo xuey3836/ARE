@@ -1,6 +1,5 @@
 
-clogLik <- function(beta,Y,G){
-  mat= table(Y,G)
+clogLik <- function(beta,mat){
   rv = mat[2,]
   nv = colSums(mat)
   x1 = beta[1]
@@ -12,8 +11,7 @@ clogLik <- function(beta,Y,G){
   return(l)
 }
 # clogLik(beta = c(exp(0.4963),exp(2*0.4963), -0.4909))
-cgradLik= function(beta,Y,G){
-  mat= table(Y,G)
+cgradLik= function(beta,mat){
   rv = mat[2,]
   nv = colSums(mat)
   x1 = beta[1]
@@ -25,8 +23,7 @@ cgradLik= function(beta,Y,G){
   l3 =sum(rv)- nv[1]*ep3/(1+ep3)-nv[2]*x1*ep3/(1+x1*ep3)-nv[3]*x2*ep3/(1+x2*ep3)
   return(c(l1,l2,l3))
 }
-chessianLik = function(beta,Y,G){
-  mat= table(Y,G)
+chessianLik = function(beta,mat){
   rv = mat[2,]
   nv = colSums(mat)
   x1 = beta[1]
