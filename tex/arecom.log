@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2018.3.11)  29 JUL 2018 15:58
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2018.3.11)  9 AUG 2018 08:37
 entering extended mode
-**C:/Users/o0/Desktop/ARE/arecom.tex
-(C:/Users/o0/Desktop/ARE/arecom.tex
+**C:/Users/o0/Desktop/ARE/tex/arecom.tex
+(C:/Users/o0/Desktop/ARE/tex/arecom.tex
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for loaded.
 (C:\CTEX\MiKTeX\tex\latex\base\article.cls
@@ -21,7 +21,7 @@ File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
 )
-(C:\Users\o0\Desktop\ARE\structure.tex
+(C:\Users\o0\Desktop\ARE\tex\structure.tex
 (C:\CTEX\MiKTeX\tex\latex\ams\math\amsmath.sty
 Package: amsmath 2000/07/18 v2.13 AMS math features
 \@mathmargin=\skip43
@@ -1065,7 +1065,7 @@ Package: booktabs 2005/04/14 v1.61803 publication quality tables
 \@lastruleclass=\count292
 \@thisrulewidth=\dimen276
 )
-(C:\Users\o0\Desktop\ARE\arecom.aux)
+(C:\Users\o0\Desktop\ARE\tex\arecom.aux)
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 37.
 LaTeX Font Info:    ... okay on input line 37.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 37.
@@ -1160,43 +1160,36 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 78.
  [1
 
-{C:/CTEX/UserData/pdftex/config/pdftex.map{Unicode.sfd}{UGBK.sfd}}]
-Overfull \hbox (11.78923pt too wide) detected at line 93
-\OML/cmm/m/it/10 \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 ) = \OM
-L/cmm/m/it/10 E[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 s\OT1/cmr/m/n/10 (\OML/cmm/m
-/it/10 ; []\OT1/cmr/m/n/10 )) = [][]
- []
-
-[2]
+{C:/CTEX/UserData/pdftex/config/pdftex.map{Unicode.sfd}{UGBK.sfd}}] [2]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 134.
+               Default added (so using `tbp') on input line 139.
 
-[3] (C:\Users\o0\Desktop\ARE\arecom.aux) ) 
+[3] (C:\Users\o0\Desktop\ARE\tex\arecom.aux) ) 
 Here is how much of TeX's memory you used:
- 19768 strings out of 495354
- 339297 string characters out of 3183859
+ 19770 strings out of 495354
+ 339355 string characters out of 3183859
  421797 words of memory out of 3000000
- 22530 multiletter control sequences out of 15000+200000
- 17669 words of font info for 55 fonts, out of 3000000 for 9000
+ 22531 multiletter control sequences out of 15000+200000
+ 18445 words of font info for 56 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 70i,12n,65p,928b,268s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/CTEX/MiKTeX/fonts/enc/dvips/cm-su
-per/cm-super-t1.enc}<C:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><
-C:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/CTEX/MiKTeX/fonts/
-type1/public/amsfonts/cm/cmmi5.pfb><C:/CTEX/MiKTeX/fonts/type1/public/amsfonts/
-cm/cmmi7.pfb><C:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/CTEX/
-MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/CTEX/MiKTeX/fonts/type1/publ
-ic/amsfonts/cm/cmr7.pfb><C:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.p
-fb><C:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/CTEX/MiKTeX/fon
-ts/type1/public/cm-super/sfbx1200.pfb><C:/CTEX/MiKTeX/fonts/type1/public/cm-sup
-er/sfbx1440.pfb><C:/CTEX/MiKTeX/fonts/type1/public/cm-super/sfrm1000.pfb><C:/CT
-EX/MiKTeX/fonts/type1/public/cm-super/sfrm1200.pfb><C:/CTEX/MiKTeX/fonts/type1/
-public/cm-super/sfrm1728.pfb><C:/CTEX/MiKTeX/fonts/type1/public/cm-super/sftt12
-00.pfb>
-Output written on arecom.pdf (3 pages, 199450 bytes).
+ 70i,12n,65p,932b,268s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/CTEX/MiKTeX/fonts/enc/dvips/c
+m-super/cm-super-t1.enc}<C:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.p
+fb><C:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/CTEX/MiKTeX/fo
+nts/type1/public/amsfonts/cm/cmmi5.pfb><C:/CTEX/MiKTeX/fonts/type1/public/amsfo
+nts/cm/cmmi7.pfb><C:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/C
+TEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/CTEX/MiKTeX/fonts/type1/
+public/amsfonts/cm/cmr7.pfb><C:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy
+10.pfb><C:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/CTEX/MiKTeX
+/fonts/type1/public/cm-super/sfbx1000.pfb><C:/CTEX/MiKTeX/fonts/type1/public/cm
+-super/sfbx1200.pfb><C:/CTEX/MiKTeX/fonts/type1/public/cm-super/sfbx1440.pfb><C
+:/CTEX/MiKTeX/fonts/type1/public/cm-super/sfrm1000.pfb><C:/CTEX/MiKTeX/fonts/ty
+pe1/public/cm-super/sfrm1200.pfb><C:/CTEX/MiKTeX/fonts/type1/public/cm-super/sf
+rm1728.pfb><C:/CTEX/MiKTeX/fonts/type1/public/cm-super/sftt1200.pfb>
+Output written on arecom.pdf (3 pages, 223111 bytes).
 PDF statistics:
- 76 PDF objects out of 1000 (max. 8388607)
+ 80 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

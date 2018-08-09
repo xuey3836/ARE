@@ -128,11 +128,11 @@ $$\rho_{\theta_i,\theta_j}= \frac{\sigma(\hat{\eta},\theta_i,\theta_j)}{{\sigma(
 \subsection{simulation}
 Let $p$ be the minor allele frequency (MAF) of the marker of interest in the population. we consider case-control data with $r=500$ cases and $s= 500$ controls. and $\lambda \in \{1.1, 1.2, 1.3\}$ and $p \in \{0.15,0.30, 0.45 \}$, and the true $\theta^{(0)} \in \{0,1/4,1/2,1\}$. . we generate $Nrep=1000$ datasets. and we compute the mean and variance of the four AREs to  $Z_{MERT}$  and $Z_{\theta^{(0)}}$
 
-\paragraph{simulate case-control data[(Gang Zheng, Yaning Yang, Xiaofeng Zhu, Robert C. Elston Analysis of Genetic Association Studies (2012)]}
+\paragraph{simulate case-control data}
 \begin{itemize}
-  \item 1
-  \item 2
-  \item 3
+  \item 
+  \item 
+  \item 
 \end{itemize}
 % Please add the following required packages to your document preamble:
 

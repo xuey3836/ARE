@@ -12,7 +12,7 @@
 %
 % License:
 % CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
-% 
+%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %----------------------------------------------------------------------------------------
@@ -20,7 +20,6 @@
 %----------------------------------------------------------------------------------------
 
 \documentclass{article}
-
 \input{structure.tex} % Include the file specifying the document structure and custom commands
 
 %----------------------------------------------------------------------------------------
@@ -31,7 +30,7 @@
 
 \author{Yuan Xue\\ \texttt{xueyuan115@mails.ucas.ac.cn}} % Author name and email address
 
-\date{University of Chinese Academy of Sciences--- \today} % University, school and/or department name(s) and a date
+\date{\today} % University, school and/or department name(s) and a date
 
 %----------------------------------------------------------------------------------------
 \usepackage{booktabs}
@@ -63,7 +62,7 @@ x_2= & 1-\theta-\theta\lambda\\
 x_3 = & \eta
 \end{align*}
 
-Denote 
+Denote
 
 \begin{align*}
   l_{n,\mu} =& \partial l_n/\partial x_\mu \quad \text{for} \quad \mu= 1,2,3 \\
@@ -113,14 +112,16 @@ $$\rho_{\theta_i,\theta_j}= \frac{\sigma(\hat{\eta},\theta_i,\theta_j)}{{\sigma(
 \item Compute  \begin{align*}
  e_{HL}(Z_{MERT},Z_{\theta}) =\frac{d_{Z_{MERT}}(\lambda)}{d_{Z_{\theta}(\lambda)}}\\
  d_{Z_\theta}(\lambda) =  \frac{\mu^2(\lambda,\theta)}{\sigma^2(\theta)}\\
- d_{Z_{MERT}}(\lambda) = \mu^2_{MERT}(\lambda)= [\mu(\lambda,\theta_i)/\sigma(\theta_i)+\mu(\lambda,\theta_j)/\sigma(\theta_j)]/\sqrt{2(1+\rho_{\theta_i,\theta_j})}
+ d_{Z_{MERT}}(\lambda) = \mu^2_{MERT}(\lambda)\\
+ \mu_{MERT}(\lambda)=[\mu(\lambda,\theta_i)/\sigma(\theta_i)+\mu(\lambda,\theta_j)/\sigma(\theta_j)]/\sqrt{2(1+\rho_{\theta_i,\theta_j})}
 \end{align*}
 
 \item Compute  \begin{align*}
  e_{B}(Z_{MERT},Z_{\theta}) = e_{HL}(Z_{MERT},Z_{\theta})\\
  \tilde{e}_{B}(Z_{MERT},Z_{\theta}) = \frac{\tilde{c}_{Z_{MERT}}}{\tilde{c}_{Z_{\theta}}}\\
  \tilde{c}_{Z_{MERT}} = 1 - \Phi(\mu^{(1)}_{MERT}(1))\\
- \tilde{c}_{Z_{\theta}} = 1 - \Phi(\mu^{-1}(1,\theta^{(0)})/\sigma(\theta^{(0)})) 
+ \tilde{c}_{Z_{\theta}} = 1 - \Phi(\mu^{(1)}(1,\theta^{(0)})/\sigma(\theta^{(0)}))\\
+ \mu^{(1)}_{MERT}(\lambda))=[\mu^{(1)}(\lambda,\theta_i)/\sigma(\theta_i)+\mu^{(1)}(\lambda,\theta_j)/\sigma(\theta_j)]/\sqrt{2(1+\rho_{\theta_i,\theta_j})}
 \end{align*}
 \end{enumerate}
 
@@ -136,7 +137,7 @@ Let $p$ be the minor allele frequency (MAF) of the marker of interest in the pop
 \begin{tabular}{@{}cccccccccccccccc@{}}
 \toprule
      &                       & \multicolumn{4}{c}{$\lambda=1.1$} &  & \multicolumn{4}{c}{$\lambda=1.3$} &  &\multicolumn{4}{c}{$\lambda=1.5$}\\ \cmidrule(r){3-6} \cmidrule(r){8-11}\cmidrule(r){13-16}
-MAF  & $\theta^{(0)}$ &   $e_P$        &    $e_C$       &    $e_{HL}$       &     $e_B$     &            &            $e_P$        &    $e_C$       &    $e_{HL}$       &     $e_B$    &           &      $e_P$        &    $e_C$       &    $e_{HL}$       &     $e_B$   \\ \hline 
+MAF  & $\theta^{(0)}$ &   $e_P$        &    $e_C$       &    $e_{HL}$       &     $e_B$     &            &            $e_P$        &    $e_C$       &    $e_{HL}$       &     $e_B$    &           &      $e_P$        &    $e_C$       &    $e_{HL}$       &     $e_B$   \\ \hline
 0.15 & 0                     &           &           &           &          &  &           &           &           &          &  &           &           &           &          \\
      & 1/4                   &           &           &           &          &  &           &           &           &          &  &           &           &           &          \\
      & 1/2                   &           &           &           &          &  &           &           &           &          &  &           &           &           &          \\
