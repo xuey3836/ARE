@@ -1,0 +1,43 @@
+\documentclass[a4,11pt,epsf, amssymb]{article}
+\usepackage{color}
+\usepackage{graphicx}
+%\input{psfig.sty}
+\usepackage{amsmath,amsfonts,latexsym,amssymb}
+    \setlength{\textwidth}{6in}
+    \setlength{\textheight}{8.5in}
+    \setlength{\evensidemargin}{0.25in}
+    \setlength{\oddsidemargin}{0.25in}
+    \setlength{\topmargin}{0in}
+\renewcommand{\baselinestretch}{1.3}
+
+\begin{document}
+\def\ditem{\vspace{-0.1cm} \item}
+
+\noindent Your original text:
+\\\\
+step 5 Compute $\mu(\lambda,\theta^{(0)})$, $\mu(\lambda,\theta_i)$, $\mu(\lambda,\theta_j)$,
+$$ \mu(\lambda,\theta) = E_{H_1,\eta_0}\big(s(\theta,\eta_\theta\big) = \frac{1}{n}\big(l_{n,11}(n,1,\hat{\eta})
++\theta l_{n,21}(n,1\hat{\eta}) -(L^T_{13}(\hat{\eta})+\theta L^T_{23}(\hat{\eta}))L_{33}^{-1}(\hat{\eta})l_{n,31}(1,1,\hat{\eta})\big)
+.$$
+\\
+{\bf Your question}:  is the formula in step 5 correct?
+\\\\
+{\bf Response}.  The likelihood is $l_n(\lambda,1-\theta+\theta\lambda,\eta)$. The null hypothesis is $H_0: \lambda=1$ vs the alternative $H_1: \lambda\neq 1$.
+
+First, you have a typo: $l_{n,11}(n,1,\hat{\eta})$ and $l_{n,21}(n,1\hat{\eta})$, which should be $l_{n,11}(1,1,\hat{\eta})$ and $l_{n,21}(1,1\hat{\eta})$. 
+
+Also, $l_{n,31}(1,1,\hat{\eta})$ should be $l_{n,13}(1,1,\hat{\eta})$ (but I think they are the same under general condiitons).
+
+
+For given $(\lambda,\theta)$ (with $\lambda\neq 1$) , I think $\mu(\lambda,\theta) = E_{H_1,\eta_0}\big(s(\theta,\eta_\theta\big)$ can be computed by the following Monte Carlo (method may not unique):
+
+Note that for given $(\lambda,\theta)$, $(L^T_{13}(\hat{\eta})+\theta L^T_{23}(\hat{\eta}))L_{33}^{-1}(\hat{\eta})$ is a constant,
+and $l_{1,11}(1,1,\hat{\eta})=l_{1,11}(1,1,\hat{\eta}|y,x)$, $l_{1,21}(1,1,\hat{\eta})=l_{1,21}(1,1,\hat{\eta}|y,x)$ and $l_{1,13}(1,1,\hat{\eta})=l_{1,13}(1,1,\hat{\eta}|y,x)$ are random variables.
+\\\\
+ 1).  Given $(\lambda,\theta)$, for $i=1,...,n$ (typically $n\geq 10,000$), sample $x_i$ from a given distribution (see ZLY for detail), then given this $x_i$, sample $y_i$ from $f(y|\lambda,1-\theta+\theta \lambda,\eta^T_0 x_i)$ (see ZLY for how to choose the density $f(\cdot|\cdot,\cdot,\cdot))$. Then we get a sample $\{(y_i,x_i): i=1,...,n\}$ under $H_1$. 
+ \\
+ 2). Set
+ $$ \mu(\lambda,\theta) = E_{H_1,\eta_0}\big(s(\theta,\eta_\theta\big) $$
+ $$ \approx \frac{1}{n}\sum_{i=1}^n\Big(l_{1,11}(1,1,\hat{\eta}|y_i,x_i)
++\theta l_{1,21}(1,1,\hat{\eta}|y_i,x_i) -(L^T_{13}(\hat{\eta})+\theta L^T_{23}(\hat{\eta}))L_{33}^{-1}(\hat{\eta})l_{1,13}(1,1,\hat{\eta}|y_i,x_i)\Big). $$
+\end{document}

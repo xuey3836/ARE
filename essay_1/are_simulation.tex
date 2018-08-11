@@ -1,0 +1,82 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Simple Sectioned Essay Template
+% LaTeX Template
+%
+% This template has been downloaded from:
+% http://www.latextemplates.com
+%
+% Note:
+% The \lipsum[#] commands throughout this template generate dummy text
+% to fill the template out. These commands should all be removed when 
+% writing essay content.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[12pt]{article} % Default font size is 12pt, it can be changed here
+
+\usepackage{geometry} % Required to change the page size to A4
+\geometry{a4paper} % Set the page size to be A4 as opposed to the default US Letter
+
+\usepackage{graphicx} % Required for including pictures
+
+\usepackage{float} % Allows putting an [H] in \begin{figure} to specify the exact location of the figure
+\usepackage{wrapfig} % Allows in-line images such as the example fish picture
+
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+
+\linespread{1.2} % Line spacing
+
+%\setlength\parindent{0pt} % Uncomment to remove all indentation from paragraphs
+
+\graphicspath{{Pictures/}} % Specifies the directory where pictures are stored
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+
+%----------------------------------------------------------------------------------------
+%	INTRODUCTION
+%----------------------------------------------------------------------------------------
+
+\section{Simulation} % Major section
+Let $p$ be the minor allele frequency (MAF) of the marker of interest in the population, we consider case-control data with $r=500$ cases and $s= 500$ controls without covariates, $\lambda \in \{1.1, 1.3, 1.5\}$ , $p \in \{0.15,0.30, 0.45 \}$,  the true $\theta^{(0)} \in \{1/2,1\}$,  and the disease prevalence $k=0.05$. We generate $Nrep=1000$ datasets, and we compute the means and standard deviations of  $e_P(Z_{MERT},Z_{\theta^{(0)}}), \tilde{e}_C(Z_{MERT},Z_{\theta^{(0)}})$ and $\tilde{e}_B(Z_{MERT},Z_{\theta^{(0)}})$, For $Z_{MERT}$, we choose $\theta_i=0, \theta_j=1$. 
+
+Table 1 show the result, the means of AREs and the standard deviations of AREs are in brackets.  First we can see the mean of all three AREs are less than 1, which show that $Z_{\theta^{{0}}}$ is consistent better than $Z_{MERT}$. Corresponding to this fact when $\theta= \theta^{(0)}$ is the true value, $Z_{\theta^{(0)}}$ is asymptotically most powerful. Then the three AREs are increased with the $p$ or $\lambda$ increased. Third, the $e_P$ has the lowest variance among the three AREs, next is $\tilde{e}_C$, last is $\tilde{e}_B$.
+
+\begin{center}
+\begin{table}[h]
+ \footnotesize
+    \begin{tabular}{ccccccccccccc}
+
+    \multicolumn{13}{c}{\bf{Table 1. The AREs of $Z_{MERT}$ and $Z_{\theta^{(0)}}$. }}\\\hline
+     &    & \multicolumn{3}{c}{$\lambda=1.1$} &  & \multicolumn{3}{c}{$\lambda=1.3$} &  &\multicolumn{3}{c}{$\lambda=1.5$}\\ \cline{3-5}
+     \cline{7-9} \cline{11-13}
+MAF  & $\theta^{(0)}$ & $e_P$ & $\tilde{e}_C$ & $\tilde{e}_B$ & & $e_P$& $\tilde{e}_C$  & $\tilde{e}_B$ & & $e_P$ & $\tilde{e}_C$  & $\tilde{e}_B$ \\ \hline
+0.15 & 1/2   &0.874&0.876&0.827&&0.887&0.904&0.856&&0.895&0.917&0.869      \\
+&&(0.056)&(0.1)&(0.115)&&(0.048)&(0.084)&(0.11)&&(0.039)&(0.069)&(0.097)\\
+     & 1    &0.654&0.814&0.723&&0.654&0.837&0.746&&0.652&0.85&0.761        \\
+     &&(0.037)&(0.094)&(0.101)&&(0.031)&(0.084)&(0.094)&&(0.029)&(0.075)&(0.092)\\
+     \\
+0.3 & 1/2   &0.963&0.94&0.912&&0.97&0.954&0.929&&0.973&0.961&0.937      \\
+&&(0.018)&(0.05)&(0.069)&&(0.013)&(0.042)&(0.064)&&(0.011)&(0.039)&(0.061)\\
+     & 1     &0.73&0.841&0.751&&0.729&0.853&0.763&&0.728&0.863&0.775       \\
+     &&(0.03)&(0.045)&(0.056)&&(0.028)&(0.043)&(0.055)&&(0.025)&(0.037)&(0.05)\\\\
+     
+0.45 & 1/2  &0.991&0.985&0.978&&0.993&0.986&0.978&&0.995&0.989&0.983          \\
+&&(0.006)&(0.038)&(0.055)&&(0.004)&(0.036)&(0.054)&&(0.003)&(0.032)&(0.051)\\
+
+     & 1    &0.76&0.85&0.766&&0.758&0.856&0.771&&0.76&0.861&0.775       \\
+     &&(0.032)&(0.033)&(0.044)&&(0.031)&(0.031)&(0.042)&&(0.027)&(0.028)&(0.039)\\
+\hline
+	\end{tabular}
+	\end{table}
+\end{center}
+\vspace{3mm}
+
+
+\end{document}

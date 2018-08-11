@@ -31,10 +31,10 @@ chessianLik = function(beta,mat){
   x3 = beta[3]
   ep3 = exp(x3)
   h = matrix(0,3,3)
-  h[1,1] = -rv[2]/x1^2- nv[2]*ep3^2/(1+x1*ep3)^2
+  h[1,1] = -rv[2]/x1^2 +nv[2]*ep3^2/(1+x1*ep3)^2
   h[1,2] = 0
-  h[1,3] = -nv[2]*ep3/(1+x1*ep3)^2
-  h[2,2] = -rv[3]/x2^2 - nv[3]*ep3^2/(1+x2*ep3)^2
+  h[1,3] = - nv[2]*ep3/(1+x1*ep3)^2
+  h[2,2] = -rv[3]/x2^2 + nv[3]*ep3^2/(1+x2*ep3)^2
   h[2,3] = - nv[3]*ep3/(1+x2*ep3)^2
   h[3,3] = -nv[1]*ep3/(1+ep3)^2-nv[2]*x1*ep3/(1+x1*ep3)^2-nv[3]*x2*ep3/(1+x2*ep3)^2
   h[2,1] = h[1,2]
@@ -42,3 +42,4 @@ chessianLik = function(beta,mat){
   h[3,2] =h[2,3]
   return(h)
 }
+

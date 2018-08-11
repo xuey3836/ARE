@@ -8,17 +8,17 @@ ex = exp(-0.5+ G*0.5)
 p1 = ex/(1+ex)
 Y = sapply(1:n, function(i){rbinom(1,1,p1[i])})
 l =glm(Y~G,family = binomial(link = "logit"))
-
-# library(maxLik)
-# maxLik(logLik = clogLik,grad = cgradLik,hess = chessianLik, start = c(1,1,0.5),Y=Y,G=G)
-# maxLik(logLik = clogLik, start = c(1,1,0.3))
+mata = table(Y,G)
+library(maxLik)
+maxLik(logLik = clogLik,grad = cgradLik,hess = chessianLik, start = c(1,1,0.5),mat=mata)
+# maxLik(logLik = clogLik, start = c(1,1,0.3),mat= mata)
 # optimise(f = function(eta){-clogLik(c(exp(0.5254),exp(2*0.5254),eta),Y,G)},interval = c(-5,5))
 
 ## The asympotic relative effcient of Z_MERT/ Z_theta
 eta = rep(1,1)
 m = length(eta)
 
-eta = optimise(f = function(eta){-clogLik(c(1,1,eta),Y,G)},interval = c(-5,5))$minimum
+eta = optimise(f = function(eta){-clogLik(c(1,1,eta),mata)},interval = c(-5,5))$minimum
 n = length(Y)
 L <- chessianLik(c(1,1,eta),Y,G)/n
 theta = 1/2

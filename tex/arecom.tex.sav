@@ -54,7 +54,7 @@ likelihood function
 
 log-likelihood function $l_n(\lambda,\eta,\theta)$
 
-we work with $l_n(\lambda,1-\theta-+\theta\lambda,\eta)$, where $\theta$  is explicitly epressed.
+we work with $l_n(\lambda,1-\theta-\theta\lambda,\eta)$, where $\theta$  is explicitly epressed.
 
 \begin{align*}
 x_1 = & \lambda\\
@@ -73,6 +73,10 @@ Denote
   L_{\mu\nu}(\eta) =& E_{H_0}(l_{1,\mu\nu}(1,1,\eta))\quad \text{for} \quad \mu=1,2,3, \nu= 1,2,3\\
 \end{align*}
 $$s(\theta,\eta) = l_{1,1}(1,1,\eta)+\theta l_{1,2}(1,1,\eta)-(L_{13}^T(\eta)+\theta L_{23}^T(\eta))L_{33}^{-1}(\eta)l_{1,3}(1,1,\eta)$$\\
+
+log-likelihood function 
+$l(x_1,x_2,x_3)= $
+
 \subsection{Algorithm}
 \begin{itemize}
 \item Input: $Y$, $G$, $\theta^{(0)}$, $\theta_i$, $\theta_j$
@@ -125,15 +129,23 @@ $$\rho_{\theta_i,\theta_j}= \frac{\sigma(\hat{\eta},\theta_i,\theta_j)}{{\sigma(
 \end{align*}
 \end{enumerate}
 
-\subsection{simulation}
-Let $p$ be the minor allele frequency (MAF) of the marker of interest in the population. we consider case-control data with $r=500$ cases and $s= 500$ controls. and $\lambda \in \{1.1, 1.2, 1.3\}$ and $p \in \{0.15,0.30, 0.45 \}$, and the true $\theta^{(0)} \in \{0,1/4,1/2,1\}$. . we generate $Nrep=1000$ datasets. and we compute the mean and variance of the four AREs to  $Z_{MERT}$  and $Z_{\theta^{(0)}}$
+\subsection{Simulation}
+Let $p$ be the minor allele frequency (MAF) of the marker of interest in the population. we consider case-control data with $r=500$ cases and $s= 500$ controls without covariates. and $\lambda \in \{1.1, 1.3, 1.5\}$ and $p \in \{0.15,0.30, 0.45 \}$, and the true $\theta^{(0)} \in \{0,1/4,1/2,1\}$, and the disease prevalence $k=0.05$. we generate $Nrep=1000$ datasets. and we compute the mean and variance of the four AREs to  $Z_{MERT}$ with $\theta_i=0, \theta_j=1$ and $Z_{\theta^{(0)}}$
 
-\paragraph{simulate case-control data}
-\begin{itemize}
-  \item 
-  \item 
-  \item 
-\end{itemize}
+\paragraph{simulate case-control data[(Gang Zheng, Yaning Yang, Xiaofeng Zhu, Robert C. Elston Analysis of Genetic Association Studies (2012)]}
+
+To simulate case-control samples without covariates for genetic marker M given a
+specific genetic model, the following algorithm can be used:
+\begin{enumerate}
+  \item Specify the numbers of cases $(r)$ and controls $(s)$, the disease prevalence $k$, the
+allele frequency $p$ for the risk allele $B$ (the minor allele if the risk allele is unknown),
+and the GRR $\lambda_2$ = $\lambda$;
+  \item Calculate the GRR $\lambda_1$ based on the given genetic model and population genotype
+frequencies $g_0$, $g_1$ and $g_2$ under Hardy-Weinberg proportions in the population;
+  \item Calculate $f_0 = k/(g_0 +\lambda_1g_1 + \lambda_2g_2), f_1 = \lambda_1f_0$, and $f_2 = \lambda_1f_0$;
+  \item Calculate $p_j = g_jf_j/k$ and $q_j = g_j(1? f_j)/(1 ?k)$ for $j = 0, 1, 2$;
+  \item Generate random samples $(r_0, r_1, r_2)$ and $(s_0, s_1, s_2)$ independently from the multinomial distributions $Mul(r;p_0,p_1,p_2)$ and $Mul(s; q_0, q_1, q_2)$, respectively
+\end{enumerate}
 % Please add the following required packages to your document preamble:
 
 \begin{table}[]
@@ -142,8 +154,8 @@ Let $p$ be the minor allele frequency (MAF) of the marker of interest in the pop
 \begin{tabular}{@{}cccccccccccccccc@{}}
 \toprule
      &                       & \multicolumn{4}{c}{$\lambda=1.1$} &  & \multicolumn{4}{c}{$\lambda=1.3$} &  &\multicolumn{4}{c}{$\lambda=1.5$}\\ \cmidrule(r){3-6} \cmidrule(r){8-11}\cmidrule(r){13-16}
-MAF  & $\theta^{(0)}$ &   $e_P$        &    $e_C$       &    $e_{HL}$       &     $e_B$     &            &            $e_P$        &    $e_C$       &    $e_{HL}$       &     $e_B$    &           &      $e_P$        &    $e_C$       &    $e_{HL}$       &     $e_B$   \\ \hline
-0.15 & 0                     &           &           &           &          &  &           &           &           &          &  &           &           &           &          \\
+MAF  & $\theta^{(0)}$ & $e_P$ & $e_C$ & $e_{HL}$ & $e_B$ & & $e_P$& $e_C$ & $e_{HL}$ & $e_B$ & & $e_P$ & $e_C$ & $e_{HL}$ & $e_B$ \\ \hline
+0.15 & 0              & 0.975 (0.0068)  &   0.874 (0.018)        &           &          &  &           &           &           &          &  &           &           &           &          \\
      & 1/4                   &           &           &           &          &  &           &           &           &          &  &           &           &           &          \\
      & 1/2                   &           &           &           &          &  &           &           &           &          &  &           &           &           &          \\
      & 1                     &           &           &           &          &  &           &           &           &          &  &           &           &           &          \\
